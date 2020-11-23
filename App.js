@@ -1,13 +1,23 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import { MovieCard } from './components/movieCard';
+import { FlatGrid } from "react-native-super-grid";
+import { myData } from "./assets/data";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <FlatGrid
+    style={styles.grid}
+    itemDimension={130}
+    data={myData}
+    spacing={10}
+    renderItem={ ({item}) => (
+      <MovieCard value={item} />
+    ) }
+    >
+
+    </FlatGrid>
   );
 }
 
@@ -15,7 +25,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    // alignItems: 'center',
+    // justifyContent: 'center',
   },
+  grid : {
+    marginTop : 10,
+    flex : 1
+  }
 });
